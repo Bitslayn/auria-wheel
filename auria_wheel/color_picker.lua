@@ -214,6 +214,7 @@ for _, v in ipairs(presetsColors) do
          wheel.previousPage()
          currentColor = myColor:copy()
          updateColor()
+         callEvent(2)
       end)
 end
 
