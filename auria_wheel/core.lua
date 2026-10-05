@@ -204,6 +204,7 @@ do
          :setUVPixels(pos)
          :setRegion(uvSize)
          :setSize(size)
+         :setLight(15, 15)
    end
    ---@param tex Texture
    ---@param uv Vector4 # pos, size
@@ -297,6 +298,7 @@ function Action:setIconTexture(texture, pos, size)
       :setUVPixels(pos)
       :setRegion(size)
       :setScale(1 / 3)
+      :setLight(15, 15)
    self.icon = model
    self.iconRender = nil
    self:updateModel()
