@@ -213,7 +213,6 @@ do
    ---@return ModelPart
    function mod.lib.makeNineslice(tex, uv, gap, size, center)
       local model = models:newPart(""):remove()
-      model:setPrimaryTexture("CUSTOM", tex)
       local gap2 = vec(gap, gap)
       local uvSize = uv.zw
       ---@cast uvSize Vector2
