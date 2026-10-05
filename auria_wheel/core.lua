@@ -208,19 +208,19 @@ do
    ---@param pos Vector2
    ---@param uvSize Vector2
    ---@param size Vector2
-   ---@return ModelPart
+   ---@return SpriteTask
    local function makePart(rootModel, tex, pos, uvSize, size)
-      local model = mod.lib.models.nineslice:copy("")
-      rootModel:addChild(model)
-      model:setUVMatrix(mod.lib.makeUVMat(tex, pos, uvSize))
-         :setScale(size.x, size.y, 1)
-      return model
+      return rootModel:newSprite(math.random().."")
+         :setTexture(tex, tex:getDimensions():unpack())
+         :setUVPixels(pos)
+         :setRegion(uvSize)
+         :setSize(size)
    end
    ---@param tex Texture
    ---@param uv Vector4 # pos, size
    ---@param gap number
    ---@param size Vector2
-   ---@param center? ModelPart
+   ---@param center? SpriteTask
    ---@return ModelPart
    function mod.lib.makeNineslice(tex, uv, gap, size, center)
       local model = models:newPart(""):remove()
@@ -251,11 +251,11 @@ do
          :setPos(centerCorner.x, -gap, 0)
       -- center
       if center then
-         model:addChild(center)
+         model:addTask(center)
       else
          center = makePart(model, tex, uv.xy + gap, uvSize - gap * 2, centerSize)
       end
-      center:setScale(centerSize.x, centerSize.y, 0)
+      center:setSize(centerSize.x, centerSize.y)
       center:setPos(-gap, -gap, 0)
       return model
    end
