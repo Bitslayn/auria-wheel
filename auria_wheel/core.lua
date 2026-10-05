@@ -191,17 +191,6 @@ function mod.lib.isClicked()
    return leftClickKey:isPressed()
 end
 
----@param tex Texture
----@param pos Vector2
----@param size Vector2
-function mod.lib.makeUVMat(tex, pos, size)
-   local texSize = tex:getDimensions()
-   local mat = matrices.mat3()
-   mat:scale((size / texSize):augmented(1))
-   mat:translate(pos / texSize)
-   return mat
-end
-
 do
    ---@param rootModel ModelPart
    ---@param tex Texture
@@ -301,9 +290,14 @@ end
 ---@return self
 function Action:setIconTexture(texture, pos, size)
    ---@cast self auria.wheel.action
-   local model = mod.lib.models.icon:copy("")
-   model:setPrimaryTexture("CUSTOM", texture)
-   model:setUVMatrix(mod.lib.makeUVMat(texture, pos, size))
+   local model = models:newPart(""):remove()
+      :setPos(8, 8)
+      :setScale(16, 16)
+   model:newSprite("")
+      :texture(texture, texture:getDimensions():unpack())
+      :setUVPixels(pos)
+      :setRegion(size)
+      :setScale(1 / 3)
    self.icon = model
    self.iconRender = nil
    self:updateModel()
