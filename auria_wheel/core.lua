@@ -26,6 +26,15 @@ hudModel:setVisible(false)
 
 local isEnabled = false
 
+local icons = {
+   icon = { uv = vec(0, 0), xy = vec(0, 0), pos = vec(-8, -8, 0), size = vec(16, 16, 0) },
+   default_icon = { uv = vec(8, 8), xy = vec(0, 24), pos = vec(-8, -8, 0), size = vec(16, 16, 0) },
+   group_arrow_up = { uv = vec(5, 3), xy = vec(8, 16), pos = vec(4, -5, -3), size = vec(5, 3, 0) },
+   group_arrow_down = { uv = vec(5, -3), xy = vec(8, 19), pos = vec(-9, -5, -3), size = vec(5, 3, 0) },
+   breadcrumb_icon = { uv = vec(8, 8), xy = vec(40, 0), pos = vec(-9, -8, -3), size = vec(8, 8, 0) },
+   breadcrumb_arrow = { uv = vec(8, 8), xy = vec(32, 0), pos = vec(-9, -8, -3), size = vec(8, 8, 0) }
+}
+
 do
    local model = models
    for path in (...):gmatch("[^/.]+") do
